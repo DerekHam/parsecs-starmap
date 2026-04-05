@@ -1,0 +1,20 @@
+{
+  "planet": {
+    "name": "Neptune",
+    "orbit": 30.069,
+    "diameter": 49244,
+    "description": "The windy blue giant at the edge of the solar system. A world of supersonic storms and deep azure clouds. The furthest outpost of the Deep Space Observatories.",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Deep_Space_Observatories"
+  },
+  "moons": [
+    {
+      "name": "Triton",
+      "orbit": 354800,
+      "diameter": 2706.8,
+      "description": "Neptune's largest moon. A captured object with a retrograde orbit and cryovolcanic activity. Home to the furthest continuously inhabited station in the solar system, Triton Research Base.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Deep_Space_Observatories"
+    }
+  ],
+  "stations": [
+  ]
+}

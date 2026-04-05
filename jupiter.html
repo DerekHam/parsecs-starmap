@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="planet-title">Planet View</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1 id="planet-heading">Planet Name</h1>
+    
+    <div id="time-control">
+        <input type="datetime-local" id="time-input">
+        <button id="time-reset">Reset to Now</button>
+    </div>
+    
+    <a href="../" id="back-button-link" class="back-button-link">← Back to Solar System</a>
+    
+    <div id="map-container">
+        <svg id="planetary-svg" viewBox="-600 -600 1200 1200"></svg>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <a id="modal-link" href="#" target="_blank">View on Wiki</a>
+        </div>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="../planetary.js"></script>
+</body>
+</html>

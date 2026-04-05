@@ -1,0 +1,145 @@
+{
+  "sun": {
+    "name": "Sun",
+    "type": "star",
+    "diameter": 1392700,
+    "description": "The star at the center of our solar system.",
+    "wiki": "https://parsecs.fandom.com/wiki/Sun"
+  },
+  "planets": [
+    {
+      "name": "Mercury",
+      "orbit": 0.39,
+      "diameter": 4879,
+      "description": "The smallest planet in our solar system.",
+      "wiki": "https://parsecs.fandom.com/wiki/Mercury",
+      "moons": [],
+      "stations": []
+    },
+    {
+      "name": "Venus",
+      "orbit": 0.72,
+      "diameter": 12104,
+      "description": "The hottest planet in our solar system.",
+      "wiki": "https://parsecs.fandom.com/wiki/Venus",
+      "moons": [],
+      "stations": []
+    },
+    {
+      "name": "Earth",
+      "orbit": 1.0,
+      "diameter": 12742,
+      "description": "Our home planet.",
+      "wiki": "https://parsecs.fandom.com/wiki/Earth",
+      "moons": [
+        {
+          "name": "Moon",
+          "orbit": 384400,
+          "diameter": 3474,
+          "description": "Earth's natural satellite.",
+          "wiki": "https://parsecs.fandom.com/wiki/Moon"
+        }
+      ],
+      "stations": [
+        {
+          "name": "ISS",
+          "orbit": 408000,
+          "diameter": 109,
+          "description": "International Space Station.",
+          "wiki": "https://parsecs.fandom.com/wiki/ISS"
+        }
+      ]
+    },
+    {
+      "name": "Mars",
+      "orbit": 1.52,
+      "diameter": 6779,
+      "description": "The red planet.",
+      "wiki": "https://parsecs.fandom.com/wiki/Mars",
+      "moons": [
+        {
+          "name": "Phobos",
+          "orbit": 9376,
+          "diameter": 22.2,
+          "description": "A moon of Mars.",
+          "wiki": "https://parsecs.fandom.com/wiki/Phobos"
+        },
+        {
+          "name": "Deimos",
+          "orbit": 23458,
+          "diameter": 12.6,
+          "description": "A moon of Mars.",
+          "wiki": "https://parsecs.fandom.com/wiki/Deimos"
+        }
+      ],
+      "stations": []
+    },
+    {
+      "name": "Jupiter",
+      "orbit": 5.2,
+      "diameter": 139822,
+      "description": "The largest planet in our solar system.",
+      "wiki": "https://parsecs.fandom.com/wiki/Jupiter",
+      "moons": [
+        {
+          "name": "Io",
+          "orbit": 421700,
+          "diameter": 3643,
+          "description": "A volcanic moon of Jupiter.",
+          "wiki": "https://parsecs.fandom.com/wiki/Io"
+        },
+        {
+          "name": "Europa",
+          "orbit": 670900,
+          "diameter": 3122,
+          "description": "An icy moon of Jupiter.",
+          "wiki": "https://parsecs.fandom.com/wiki/Europa"
+        }
+      ],
+      "stations": []
+    },
+    {
+      "name": "Saturn",
+      "orbit": 9.54,
+      "diameter": 116464,
+      "description": "The ringed planet.",
+      "wiki": "https://parsecs.fandom.com/wiki/Saturn",
+      "moons": [
+        {
+          "name": "Titan",
+          "orbit": 1222000,
+          "diameter": 5150,
+          "description": "Saturn's largest moon.",
+          "wiki": "https://parsecs.fandom.com/wiki/Titan"
+        }
+      ],
+      "stations": []
+    },
+    {
+      "name": "Uranus",
+      "orbit": 19.19,
+      "diameter": 50724,
+      "description": "An ice giant planet.",
+      "wiki": "https://parsecs.fandom.com/wiki/Uranus",
+      "moons": [],
+      "stations": []
+    },
+    {
+      "name": "Neptune",
+      "orbit": 30.06,
+      "diameter": 49244,
+      "description": "The farthest planet from the Sun.",
+      "wiki": "https://parsecs.fandom.com/wiki/Neptune",
+      "moons": [
+        {
+          "name": "Triton",
+          "orbit": 354800,
+          "diameter": 2707,
+          "description": "Neptune's largest moon.",
+          "wiki": "https://parsecs.fandom.com/wiki/Triton"
+        }
+      ],
+      "stations": []
+    }
+  ]
+}

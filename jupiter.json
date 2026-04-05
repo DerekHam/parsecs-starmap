@@ -1,0 +1,53 @@
+{
+  "planet": {
+    "name": "Jupiter",
+    "orbit": 5.203,
+    "diameter": 139820,
+    "description": "The gas giant king of the solar system. A swirling world of clouds and storms, home to a complex moon system.",
+    "wiki": "https://parsecs.fandom.com/wiki/Jupiter"
+  },
+  "moons": [
+    {
+      "name": "Io",
+      "orbit": 421700,
+      "diameter": 3643.2,
+      "description": "The most volcanically active body in the solar system. Constantly reshaped by internal heating.",
+      "wiki": "https://parsecs.fandom.com/wiki/Io"
+    },
+    {
+      "name": "Europa",
+      "orbit": 671100,
+      "diameter": 3121.6,
+      "description": "An icy moon hiding a vast subsurface ocean. Prime candidate for extraterrestrial life.",
+      "wiki": "https://parsecs.fandom.com/wiki/Europa"
+    },
+    {
+      "name": "Ganymede",
+      "orbit": 1070400,
+      "diameter": 5268.2,
+      "description": "The largest moon in the solar system. Larger than the planet Mercury.",
+      "wiki": "https://parsecs.fandom.com/wiki/Ganymede"
+    },
+    {
+      "name": "Callisto",
+      "orbit": 1882600,
+      "diameter": 4820.6,
+      "description": "Heavily cratered ancient moon. Possibly harboring subsurface water.",
+      "wiki": "https://parsecs.fandom.com/wiki/Callisto"
+    }
+  ],
+  "stations": [
+    {
+      "name": "Io Research Station",
+      "orbit": 600000,
+      "description": "Orbital platform studying Io's volcanic activity from safe distance.",
+      "wiki": "https://parsecs.fandom.com/wiki/Io_Research_Station"
+    },
+    {
+      "name": "Europa Colony",
+      "orbit": 900000,
+      "description": "Research colony on Europa's icy surface. Gateway to the subsurface ocean.",
+      "wiki": "https://parsecs.fandom.com/wiki/Europa_Colony"
+    }
+  ]
+}

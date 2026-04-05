@@ -1,0 +1,18 @@
+{
+  "planet": {
+    "name": "Venus",
+    "orbit": 0.723,
+    "diameter": 12104,
+    "description": "The hellish twin of Earth. Shrouded in thick sulfuric acid clouds with crushing atmospheric pressure.",
+    "wiki": "https://parsecs.fandom.com/wiki/Venus"
+  },
+  "moons": [],
+  "stations": [
+    {
+      "name": "Aphrodite Station",
+      "orbit": 6450,
+      "description": "High-altitude platform studying Venus's atmosphere and volcanic activity.",
+      "wiki": "https://parsecs.fandom.com/wiki/Aphrodite_Station"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "planet": {
+    "name": "Saturn",
+    "orbit": 9.537,
+    "diameter": 116460,
+    "description": "The ringed gas giant. Surrounded by a magnificent system of icy rings and numerous moons.",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Saturn%27s_Moons"
+  },
+  "moons": [
+    {
+      "name": "Titan",
+      "orbit": 1222870,
+      "diameter": 5150,
+      "description": "Saturn's largest moon. A world with thick atmosphere, methane lakes, and complex geology. Major hub for refueling and research in the outer solar system and beyond.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Saturn%27s_Moons/Titan"
+    }
+  ],
+  "stations": [
+    {
+      "name": "Cassini Division Station",
+      "orbit": 90000,
+      "description": "Cargo Hub situated in the gap between Saturn's A and B rings. Named after the famous Cassini Division in Saturn's rings. Major supplier of Mars' Terraforming endeavor and Ganymede's farms.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Saturn%27s_Moons/Cassini_Division_Station"
+    }
+  ]
+}

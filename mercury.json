@@ -1,0 +1,18 @@
+{
+  "planet": {
+    "name": "Mercury",
+    "orbit": 0.387,
+    "diameter": 3832,
+    "description": "The closest planet to the Sun. A scorched, airless world with extreme temperature variations. Colony of Earth",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Mercury"
+  },
+  "moons": [],
+  "stations": [
+    {
+      "name": "Helios Station",
+      "orbit": 4200,
+      "description": "Research outpost studying solar phenomena and Mercury's geology.",
+      "wiki": "https://parsecs.fandom.com/wiki/Helios_Station"
+    }
+  ]
+}

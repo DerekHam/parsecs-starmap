@@ -1,0 +1,26 @@
+{
+  "planet": {
+    "name": "Earth",
+    "orbit": 1,
+    "diameter": 12742,
+    "description": "The blue planet and home to human civilization. A world of diverse ecosystems and life forms.",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Earth"
+  },
+  "moons": [
+    {
+      "name": "Luna | The Moon",
+      "orbit": 384400,
+      "diameter": 3474,
+      "description": "Earth's natural satellite. The first celestial body humans ever visited.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Earth/Luna"
+    }
+  ],
+  "stations": [
+    {
+      "name": "ISS",
+      "orbit": 250000,
+      "description": "International Space Station. Crewed facility in low Earth orbit at ~400km altitude.",
+      "wiki": "https://parsecs.fandom.com/wiki/ISS"
+    }
+  ]
+}

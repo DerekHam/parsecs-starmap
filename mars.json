@@ -1,0 +1,33 @@
+{
+  "planet": {
+    "name": "Mars",
+    "orbit": 1.524,
+    "diameter": 6779,
+    "description": "The red planet. Ancient river valleys and massive volcanoes hint at a wetter past. Prime candidate for colonization.",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Mars"
+  },
+  "moons": [
+    {
+      "name": "Phobos",
+      "orbit": 9376,
+      "diameter": 22.53,
+      "description": "Larger moon of Mars. Rapidly decaying orbit will eventually collide with Mars.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/MarsPhobos"
+    },
+    {
+      "name": "Deimos",
+      "orbit": 23463,
+      "diameter": 12.4,
+      "description": "Smaller moon of Mars. Gradually escaping Mars's gravity.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Mars/Deimos"
+    }
+  ],
+  "stations": [
+    {
+      "name": "Olympus Station",
+      "orbit": 12000,
+      "description": "Research and supply station in Martian orbit.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Mars/Olympus_Station"
+    }
+  ]
+}

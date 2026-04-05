@@ -1,0 +1,26 @@
+{
+  "planet": {
+    "name": "Uranus",
+    "orbit": 19.191,
+    "diameter": 50724,
+    "description": "The ice giant rotating on its side. A mysterious blue-green world of methane clouds and extreme winds. Home to the Deep Space Observatories, a network of research stations studying the outer solar system and interstellar space.",
+    "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Deep_Space_Observatories"
+  },
+  "moons": [
+    {
+      "name": "Titania",
+      "orbit": 435910,
+      "diameter": 1577.8,
+      "description": "Largest moon of Uranus. Shows evidence of past geological activity.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Deep_Space_Observatories"
+    }
+  ],
+  "stations": [
+    {
+      "name": "Uranus Observation Post",
+      "orbit": 100000,
+      "description": "Long-term research facility studying atmospheric phenomena.",
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Worlds/The_Solar_System/Deep_Space_Observatories"
+    }
+  ]
+}

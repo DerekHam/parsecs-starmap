@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsecs Star Map - Solar System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Parsecs Star Map</h1>
+    
+    <div id="time-control">
+        <input type="datetime-local" id="time-input">
+        <button id="time-reset">Reset to Now</button>
+    </div>
+    
+    <button id="home-button">Home</button>
+    
+    <div id="map-container">
+        <svg id="solar-system-svg" viewBox="-1000 -750 2000 1500"></svg>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <a id="modal-link" href="#" target="_blank">View on Wiki</a>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
