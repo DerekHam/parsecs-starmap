@@ -1,0 +1,9 @@
+{
+  "systems": [
+    {
+      "id": "solar-system",
+      "name": "The Solar System",
+      "file": "data/solar-system.json"
+    }
+  ]
+}

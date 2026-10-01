@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parsecs Star Map - Solar System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Parsecs Starmap — The Solar System</title>
+  <meta name="description" content="A true-scale 3D map of the Parsecs universe solar system." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23FDB813'/%3E%3Cellipse cx='16' cy='16' rx='13' ry='5' fill='none' stroke='%2364c8ff' stroke-width='1.4'/%3E%3Ccircle cx='28' cy='13' r='2' fill='%234a90e2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/three.module.js?v=10",
+        "three/addons/": "./vendor/three/addons/"
+      }
+    }
+  </script>
 </head>
 <body>
-    <h1>Parsecs Star Map</h1>
-    
-    <div id="time-control">
-        <input type="datetime-local" id="time-input">
-        <button id="time-reset">Reset to Now</button>
-    </div>
-    
-    <button id="home-button">Home</button>
-    
-    <div id="map-container">
-        <svg id="solar-system-svg" viewBox="-1000 -750 2000 1500"></svg>
-    </div>
-    
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
-            <a id="modal-link" href="#" target="_blank">View on Wiki</a>
-        </div>
-    </div>
+  <div id="app">
+    <div id="viewport"></div>
+    <div id="labels"></div>
 
-    <script src="shared.js"></script>
-    <script src="script.js"></script>
+    <header class="topbar">
+      <div class="brand"><b>PARSECS</b><span>Starmap</span></div>
+      <button class="nav-up" id="nav-up" title="Up one level (Esc)" disabled>
+        <span aria-hidden="true">↑</span> Up
+      </button>
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Location"></nav>
+      <div class="search">
+        <input id="search-input" type="search" placeholder="Search worlds, moons, stations…" autocomplete="off" />
+        <div class="search-results" id="search-results" hidden></div>
+      </div>
+    </header>
+
+    <aside class="toolbar" id="toolbar">
+      <div class="toolbar-title">Display</div>
+      <button class="tool-btn" id="toggle-markers" aria-pressed="true">Markers</button>
+      <button class="tool-btn" id="toggle-labels" aria-pressed="true">Labels</button>
+      <button class="tool-btn" id="toggle-orbits" aria-pressed="true">Orbits</button>
+      <button class="tool-btn" id="toggle-inhabited" aria-pressed="false">Inhabited only</button>
+      <div class="toolbar-title">Legend</div>
+      <ul class="legend" id="legend"></ul>
+      <button class="tool-btn wide" id="reset-view">Reset view</button>
+      <div class="credits">
+        Planets/star © <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">Solar System Scope</a> (CC BY 4.0)<br>
+        Moons/dwarfs © <a href="https://github.com/CelestiaProject/CelestiaContent" target="_blank" rel="noopener">Celestia Content</a> (CC BY)
+        <br><span class="build" id="build-info">build v10 (loading…)</span>
+      </div>
+    </aside>
+
+    <section class="info-panel" id="info-panel" hidden>
+      <button class="info-close" id="info-close" aria-label="Close">×</button>
+      <div class="info-eyebrow" id="info-type"></div>
+      <h2 id="info-name"></h2>
+      <p class="info-desc" id="info-desc"></p>
+      <div class="info-meta" id="info-meta"></div>
+      <a class="info-link" id="info-link" target="_blank" rel="noopener">Open on the wiki</a>
+      <div class="info-children" id="info-children"></div>
+    </section>
+
+    <footer class="timebar">
+      <button class="time-btn" id="time-play" title="Play / pause">▶</button>
+      <select id="time-speed" class="time-select" title="Simulation speed">
+        <option value="1">1 day / s</option>
+        <option value="7">1 week / s</option>
+        <option value="30.44">1 month / s</option>
+        <option value="365.25" selected>1 year / s</option>
+        <option value="3652.5">10 years / s</option>
+      </select>
+      <input type="range" id="time-slider" min="0" max="1000" value="500" />
+      <div class="time-date" id="time-date"></div>
+      <button class="time-btn small" id="time-2206">2206</button>
+      <button class="time-btn small" id="time-now">Now</button>
+    </footer>
+
+    <div class="loading" id="loading">Loading the solar system…</div>
+  </div>
+
+  <script type="module" src="js/main.js?v=10"></script>
 </body>
 </html>
