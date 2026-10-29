@@ -1,9 +1,9 @@
 // Builds the three.js object graph and meshes for every body in a system.
 
 import * as THREE from 'three';
-import { KM_PER_UNIT, AU_KM, DAY_MS, J2000_MS } from './config.js?v=12';
-import { relativePosition } from './kepler.js?v=12';
-import { bodyTexture, ringTexture, glowTexture } from './textures.js?v=12';
+import { KM_PER_UNIT, AU_KM, DAY_MS, J2000_MS } from './config.js?v=13';
+import { relativePosition } from './kepler.js?v=13';
+import { bodyTexture, ringTexture, glowTexture } from './textures.js?v=13';
 
 function sphereSegments(radiusUnits) {
   if (radiusUnits < 0.001) return [8, 6];

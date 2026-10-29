@@ -1,15 +1,15 @@
 // Bootstrap: load data, build the scene, wire interaction, run the loop.
 
 import * as THREE from 'three';
-import { createScene } from './scene.js?v=12';
-import { createBodies, updateBodies } from './bodies.js?v=12';
-import { loadAssets } from './assets.js?v=12';
-import { createOrbitLines } from './orbits.js?v=12';
-import { createMarkers } from './markers.js?v=12';
-import { createFocus } from './focus.js?v=12';
-import { createUI } from './ui.js?v=12';
-import { createHighlights } from './highlights.js?v=12';
-import { TimeEngine } from './time.js?v=12';
+import { createScene } from './scene.js?v=13';
+import { createBodies, updateBodies } from './bodies.js?v=13';
+import { loadAssets } from './assets.js?v=13';
+import { createOrbitLines } from './orbits.js?v=13';
+import { createMarkers } from './markers.js?v=13';
+import { createFocus } from './focus.js?v=13';
+import { createUI } from './ui.js?v=13';
+import { createHighlights } from './highlights.js?v=13';
+import { TimeEngine } from './time.js?v=13';
 
 async function loadSystem() {
   const indexRes = await fetch('data/systems.json');
@@ -45,7 +45,7 @@ async function main() {
   // Optional: featured articles highlighted on the map.
   let highlightData = { highlights: [] };
   try {
-    const hres = await fetch('data/highlights.json');
+    const hres = await fetch('data/highlights.json?v=13');
     if (hres.ok) highlightData = await hres.json();
   } catch (err) {
     // highlights are optional; ignore failures
@@ -66,9 +66,9 @@ async function main() {
   const buildInfo = document.getElementById('build-info');
   if (buildInfo) {
     buildInfo.textContent =
-      `build v12 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
+      `build v13 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
   }
-  console.log('[Parsecs] build v12 loaded:', systemData.name, systemData.bodies.length, 'bodies');
+  console.log('[Parsecs] build v13 loaded:', systemData.name, systemData.bodies.length, 'bodies');
 
   const focus = createFocus({ camera, controls, records, systemData });
 
@@ -135,7 +135,7 @@ async function main() {
   });
   ui.init();
 
-  createHighlights({
+  const highlightsLayer = createHighlights({
     highlights: highlightData.highlights,
     scene,
     records,
@@ -208,6 +208,7 @@ async function main() {
     const dt = Math.min(clock.getDelta(), 0.1);
     engine.update(dt);
     updateBodies(systemData, records, engine.current);
+    highlightsLayer.update(engine.current);
     focus.update(dt);
     markers.update(camera, labelProbe);
     controls.update();

@@ -1,23 +1,28 @@
 // Highlight pins: a small yellow triangle pointing down at the location of a
-// featured article. Body-anchored pins follow the body; point-anchored pins sit
-// at a fixed spot (e.g. a region of the asteroid belt).
+// featured article. Body-anchored pins follow the body; orbit-anchored pins
+// move along a real Keplerian orbit.
 
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-import { AU_KM, KM_PER_UNIT } from './config.js?v=12';
+import { relativePosition } from './kepler.js?v=13';
+import { AU_KM, KM_PER_UNIT } from './config.js?v=13';
 
 export function createHighlights({ highlights, scene, records, onActivate }) {
   const pins = [];
+  const orbiting = [];
 
   for (const highlight of highlights) {
     let parent = null;
-    let position = null;
+    let fixedPosition = null;
+    let orbit = null;
 
     if (highlight.body && records.get(highlight.body)) {
       parent = records.get(highlight.body).pivot;
+    } else if (highlight.orbit) {
+      orbit = highlight.orbit;
     } else if (highlight.point) {
       const a = (highlight.point.aAU * AU_KM) / KM_PER_UNIT;
       const ang = (highlight.point.angleDeg || 0) * (Math.PI / 180);
-      position = { x: a * Math.cos(ang), y: 0, z: a * Math.sin(ang) };
+      fixedPosition = { x: a * Math.cos(ang), y: 0, z: a * Math.sin(ang) };
     } else {
       continue;
     }
@@ -42,12 +47,22 @@ export function createHighlights({ highlights, scene, records, onActivate }) {
     if (parent) {
       parent.add(obj);
     } else {
-      obj.position.set(position.x, position.y, position.z);
+      const p = fixedPosition || relativePosition(orbit, Date.now());
+      obj.position.set(p.x, p.y, p.z);
       scene.add(obj);
+      if (orbit) orbiting.push({ obj, orbit });
     }
 
     pins.push({ highlight, el, obj });
   }
 
-  return { pins };
+  // Advance the orbit-anchored pins on their Kepler orbits.
+  function update(timeMs) {
+    for (const item of orbiting) {
+      const p = relativePosition(item.orbit, timeMs);
+      item.obj.position.set(p.x, p.y, p.z);
+    }
+  }
+
+  return { pins, update };
 }

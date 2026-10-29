@@ -15,16 +15,22 @@
     {
       "id": "asteroid-mining",
       "title": "Asteroid Mining",
-      "point": { "aAU": 2.45, "angleDeg": 210 },
+      "orbit": {
+        "aAU": 1.45, "e": 0.32, "iDeg": 8, "nodeDeg": 120,
+        "periDeg": 60, "m0Deg": 210, "periodDays": 637.7
+      },
       "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Technologies/Asteroid_Mining",
-      "description": "Sample article: how the belt's resources are extracted and shipped."
+      "description": "Sample article: a near-Earth mining rock whose orbit swings out through the belt. Perihelion ~0.99 AU."
     },
     {
       "id": "paranoid-asteroid",
       "title": "Paranoid Asteroid",
-      "point": { "aAU": 2.95, "angleDeg": 30 },
+      "orbit": {
+        "aAU": 1.75, "e": 0.43, "iDeg": 12, "nodeDeg": 300,
+        "periDeg": 210, "m0Deg": 40, "periodDays": 845.5
+      },
       "wiki": "https://parsecs.fandom.com/wiki/Storylines/Paranoid_Astroid_谵妄的星",
-      "description": "Sample storyline set among the asteroids of the belt."
+      "description": "Sample storyline: a second near-Earth asteroid, on a different orbit that also passes close to Earth. Perihelion ~1.00 AU."
     }
   ]
 }
