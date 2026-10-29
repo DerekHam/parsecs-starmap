@@ -1,14 +1,16 @@
 // Highlight pins: a small yellow triangle pointing down at the location of a
 // featured article. Body-anchored pins follow the body; orbit-anchored pins
-// move along a real Keplerian orbit.
+// move along a real Keplerian orbit. Hovering a pin and its sidebar entry are
+// linked through the onHover callback.
 
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-import { relativePosition } from './kepler.js?v=13';
-import { AU_KM, KM_PER_UNIT } from './config.js?v=13';
+import { relativePosition } from './kepler.js?v=14';
+import { AU_KM, KM_PER_UNIT } from './config.js?v=14';
 
-export function createHighlights({ highlights, scene, records, onActivate }) {
+export function createHighlights({ highlights, scene, records, onActivate, onHover }) {
   const pins = [];
   const orbiting = [];
+  const elements = new Map();
 
   for (const highlight of highlights) {
     let parent = null;
@@ -32,10 +34,19 @@ export function createHighlights({ highlights, scene, records, onActivate }) {
     el.className = 'highlight-pin';
     el.title = highlight.title;
     el.setAttribute('aria-label', highlight.title);
+    el.dataset.highlightId = highlight.id;
     el.innerHTML = '<span class="pin-triangle"></span>';
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       onActivate(highlight);
+    });
+    el.addEventListener('pointerenter', () => {
+      if (onHover) onHover(highlight.id, true);
+      else el.classList.add('is-hover');
+    });
+    el.addEventListener('pointerleave', () => {
+      if (onHover) onHover(highlight.id, false);
+      else el.classList.remove('is-hover');
     });
 
     const obj = new CSS2DObject(el);
@@ -53,6 +64,7 @@ export function createHighlights({ highlights, scene, records, onActivate }) {
       if (orbit) orbiting.push({ obj, orbit });
     }
 
+    elements.set(highlight.id, el);
     pins.push({ highlight, el, obj });
   }
 
@@ -64,5 +76,11 @@ export function createHighlights({ highlights, scene, records, onActivate }) {
     }
   }
 
-  return { pins, update };
+  // Highlight a pin from the sidebar.
+  function setHover(id, on) {
+    const el = elements.get(id);
+    if (el) el.classList.toggle('is-hover', on);
+  }
+
+  return { pins, update, setHover };
 }

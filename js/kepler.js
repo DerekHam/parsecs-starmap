@@ -2,7 +2,7 @@
 // Elements follow the classic (a, e, i, Omega, omega, M0) set with a J2000 mean
 // anomaly. Positions are returned relative to the orbit's parent in scene units.
 
-import { AU_KM, DEG, J2000_MS, KM_PER_UNIT, DAY_MS } from './config.js?v=13';
+import { AU_KM, DEG, J2000_MS, KM_PER_UNIT, DAY_MS } from './config.js?v=14';
 
 function normalizeAngle(a) {
   const twoPi = Math.PI * 2;

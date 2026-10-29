@@ -1,15 +1,15 @@
 // Bootstrap: load data, build the scene, wire interaction, run the loop.
 
 import * as THREE from 'three';
-import { createScene } from './scene.js?v=13';
-import { createBodies, updateBodies } from './bodies.js?v=13';
-import { loadAssets } from './assets.js?v=13';
-import { createOrbitLines } from './orbits.js?v=13';
-import { createMarkers } from './markers.js?v=13';
-import { createFocus } from './focus.js?v=13';
-import { createUI } from './ui.js?v=13';
-import { createHighlights } from './highlights.js?v=13';
-import { TimeEngine } from './time.js?v=13';
+import { createScene } from './scene.js?v=14';
+import { createBodies, updateBodies } from './bodies.js?v=14';
+import { loadAssets } from './assets.js?v=14';
+import { createOrbitLines } from './orbits.js?v=14';
+import { createMarkers } from './markers.js?v=14';
+import { createFocus } from './focus.js?v=14';
+import { createUI } from './ui.js?v=14';
+import { createHighlights } from './highlights.js?v=14';
+import { TimeEngine } from './time.js?v=14';
 
 async function loadSystem() {
   const indexRes = await fetch('data/systems.json');
@@ -45,7 +45,7 @@ async function main() {
   // Optional: featured articles highlighted on the map.
   let highlightData = { highlights: [] };
   try {
-    const hres = await fetch('data/highlights.json?v=13');
+    const hres = await fetch('data/highlights.json?v=14');
     if (hres.ok) highlightData = await hres.json();
   } catch (err) {
     // highlights are optional; ignore failures
@@ -66,9 +66,9 @@ async function main() {
   const buildInfo = document.getElementById('build-info');
   if (buildInfo) {
     buildInfo.textContent =
-      `build v13 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
+      `build v14 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
   }
-  console.log('[Parsecs] build v13 loaded:', systemData.name, systemData.bodies.length, 'bodies');
+  console.log('[Parsecs] build v14 loaded:', systemData.name, systemData.bodies.length, 'bodies');
 
   const focus = createFocus({ camera, controls, records, systemData });
 
@@ -119,9 +119,18 @@ async function main() {
     ui.renderBreadcrumb([]);
   }
 
+  let ui = null;
+  let highlightsLayer = null;
+
+  // Hovering a pin highlights its sidebar entry, and vice versa.
+  function setHighlightHover(id, on) {
+    if (highlightsLayer) highlightsLayer.setHover(id, on);
+    if (ui) ui.setHighlightHover(id, on);
+  }
+
   const markers = createMarkers(systemData, records, selectBody);
 
-  const ui = createUI({
+  ui = createUI({
     engine,
     systemData,
     markers,
@@ -131,15 +140,17 @@ async function main() {
     onToggleOrbits: null,
     onResetView: resetView,
     onUp: goUp,
-    onHighlight: activateHighlight
+    onHighlight: activateHighlight,
+    onHighlightHover: setHighlightHover
   });
   ui.init();
 
-  const highlightsLayer = createHighlights({
+  highlightsLayer = createHighlights({
     highlights: highlightData.highlights,
     scene,
     records,
-    onActivate: activateHighlight
+    onActivate: activateHighlight,
+    onHover: setHighlightHover
   });
 
   // Keyboard: Escape / Backspace go up one level.

@@ -1,6 +1,6 @@
 // DOM overlay: toolbar, search, info panel, breadcrumb and time controls.
 
-import { BODY_TYPES, AU_KM } from './config.js?v=13';
+import { BODY_TYPES, AU_KM } from './config.js?v=14';
 
 const WIKI_BASE = 'https://parsecs.fandom.com/wiki/';
 
@@ -19,7 +19,7 @@ function typeLabel(type) {
   return (BODY_TYPES[type] && BODY_TYPES[type].label) || type;
 }
 
-export function createUI({ engine, systemData, markers, records, highlights = [], onSelect, onToggleOrbits, onResetView, onUp, onHighlight }) {
+export function createUI({ engine, systemData, markers, records, highlights = [], onSelect, onToggleOrbits, onResetView, onUp, onHighlight, onHighlightHover }) {
   const $ = (id) => document.getElementById(id);
 
   const el = {
@@ -75,15 +75,25 @@ export function createUI({ engine, systemData, markers, records, highlights = []
       btn.type = 'button';
       btn.className = 'highlight-item';
       btn.title = highlight.title;
+      btn.dataset.highlightId = highlight.id;
       const tri = document.createElement('span');
       tri.className = 'hi-tri';
       const label = document.createElement('span');
       label.textContent = highlight.title;
       btn.append(tri, label);
       btn.addEventListener('click', () => onHighlight && onHighlight(highlight));
+      btn.addEventListener('pointerenter', () => onHighlightHover && onHighlightHover(highlight.id, true));
+      btn.addEventListener('pointerleave', () => onHighlightHover && onHighlightHover(highlight.id, false));
       li.appendChild(btn);
       el.highlightsList.appendChild(li);
     }
+  }
+
+  // Highlight a sidebar entry from the map.
+  function setHighlightHover(id, on) {
+    if (!el.highlightsList) return;
+    const btn = el.highlightsList.querySelector(`[data-highlight-id="${id}"]`);
+    if (btn) btn.classList.toggle('is-hover', on);
   }
 
   function buildLegend() {
@@ -292,5 +302,5 @@ export function createUI({ engine, systemData, markers, records, highlights = []
     syncTimeUI();
   }
 
-  return { init, showInfo, hideInfo, renderBreadcrumb, syncTimeUI, filters };
+  return { init, showInfo, hideInfo, renderBreadcrumb, syncTimeUI, setHighlightHover, filters };
 }
