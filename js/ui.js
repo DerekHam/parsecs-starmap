@@ -1,6 +1,6 @@
 // DOM overlay: toolbar, search, info panel, breadcrumb and time controls.
 
-import { BODY_TYPES, AU_KM } from './config.js?v=11';
+import { BODY_TYPES, AU_KM } from './config.js?v=12';
 
 const WIKI_BASE = 'https://parsecs.fandom.com/wiki/';
 

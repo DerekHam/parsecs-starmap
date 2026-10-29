@@ -1,15 +1,15 @@
 // Bootstrap: load data, build the scene, wire interaction, run the loop.
 
 import * as THREE from 'three';
-import { createScene } from './scene.js?v=11';
-import { createBodies, updateBodies } from './bodies.js?v=11';
-import { loadAssets } from './assets.js?v=11';
-import { createOrbitLines } from './orbits.js?v=11';
-import { createMarkers } from './markers.js?v=11';
-import { createFocus } from './focus.js?v=11';
-import { createUI } from './ui.js?v=11';
-import { createHighlights } from './highlights.js?v=11';
-import { TimeEngine } from './time.js?v=11';
+import { createScene } from './scene.js?v=12';
+import { createBodies, updateBodies } from './bodies.js?v=12';
+import { loadAssets } from './assets.js?v=12';
+import { createOrbitLines } from './orbits.js?v=12';
+import { createMarkers } from './markers.js?v=12';
+import { createFocus } from './focus.js?v=12';
+import { createUI } from './ui.js?v=12';
+import { createHighlights } from './highlights.js?v=12';
+import { TimeEngine } from './time.js?v=12';
 
 async function loadSystem() {
   const indexRes = await fetch('data/systems.json');
@@ -66,9 +66,9 @@ async function main() {
   const buildInfo = document.getElementById('build-info');
   if (buildInfo) {
     buildInfo.textContent =
-      `build v11 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
+      `build v12 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
   }
-  console.log('[Parsecs] build v11 loaded:', systemData.name, systemData.bodies.length, 'bodies');
+  console.log('[Parsecs] build v12 loaded:', systemData.name, systemData.bodies.length, 'bodies');
 
   const focus = createFocus({ camera, controls, records, systemData });
 

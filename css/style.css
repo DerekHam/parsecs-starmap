@@ -138,8 +138,8 @@ html, body {
   margin: 0 auto;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-top: 11px solid #ffd21f;
-  filter: drop-shadow(0 0 4px rgba(255, 210, 30, 0.85));
+  border-top: 11px solid var(--accent-warm);
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 5px rgba(255, 207, 77, 0.75));
   animation: pinPulse 2.2s ease-in-out infinite;
   transition: transform 0.12s ease;
 }
@@ -323,15 +323,15 @@ html, body {
   cursor: pointer;
 }
 .highlight-item:hover {
-  border-color: rgba(255, 210, 30, 0.6);
-  background: rgba(255, 210, 30, 0.08);
+  border-color: rgba(255, 207, 77, 0.6);
+  background: rgba(255, 207, 77, 0.08);
 }
 .hi-tri {
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 8px solid #ffd21f;
+  border-top: 8px solid var(--accent-warm);
   flex: none;
 }
 

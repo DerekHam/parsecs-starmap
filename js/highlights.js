@@ -3,7 +3,7 @@
 // at a fixed spot (e.g. a region of the asteroid belt).
 
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-import { AU_KM, KM_PER_UNIT } from './config.js?v=11';
+import { AU_KM, KM_PER_UNIT } from './config.js?v=12';
 
 export function createHighlights({ highlights, scene, records, onActivate }) {
   const pins = [];
