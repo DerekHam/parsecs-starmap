@@ -135,6 +135,21 @@ To swap in your own imagery, drop a file in `textures/` and point the body's
 `texture` (and optional `clouds`) field at it. Earth also uses a transparent
 cloud shell, controlled by its `clouds` field.
 
+## Featured articles (highlights)
+
+`data/highlights.json` lists sample articles shown in the **Highlights** section
+and marked on the map by small yellow downward triangles. A highlight can point
+at a body (the pin tracks it) or at a fixed point in the belt:
+
+```jsonc
+{ "title": "Cassini Division Station", "body": "cassini-division-station" }
+{ "title": "Asteroid Mining", "point": { "aAU": 2.45, "angleDeg": 210 },
+  "wiki": "https://parsecs.fandom.com/wiki/..." }
+```
+
+Clicking a highlight (or its pin) focuses the station, or shows the article in
+the info panel with a link to the wiki.
+
 ## Station placement
 
 Stations can either orbit their parent (`orbit`) or sit at a fixed point

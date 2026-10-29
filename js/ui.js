@@ -1,6 +1,6 @@
 // DOM overlay: toolbar, search, info panel, breadcrumb and time controls.
 
-import { BODY_TYPES, AU_KM } from './config.js?v=10';
+import { BODY_TYPES, AU_KM } from './config.js?v=11';
 
 const WIKI_BASE = 'https://parsecs.fandom.com/wiki/';
 
@@ -19,12 +19,13 @@ function typeLabel(type) {
   return (BODY_TYPES[type] && BODY_TYPES[type].label) || type;
 }
 
-export function createUI({ engine, systemData, markers, records, onSelect, onToggleOrbits, onResetView, onUp }) {
+export function createUI({ engine, systemData, markers, records, highlights = [], onSelect, onToggleOrbits, onResetView, onUp, onHighlight }) {
   const $ = (id) => document.getElementById(id);
 
   const el = {
     navUp: $('nav-up'),
     breadcrumb: $('breadcrumb'),
+    highlightsList: $('highlights-list'),
     search: $('search-input'),
     results: $('search-results'),
     legend: $('legend'),
@@ -63,6 +64,26 @@ export function createUI({ engine, systemData, markers, records, onSelect, onTog
     }
     if (onToggleOrbits) onToggleOrbits(filters.orbits);
     el.toggleOrbits.setAttribute('aria-pressed', String(filters.orbits));
+  }
+
+  function buildHighlights() {
+    if (!el.highlightsList) return;
+    el.highlightsList.innerHTML = '';
+    for (const highlight of highlights) {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'highlight-item';
+      btn.title = highlight.title;
+      const tri = document.createElement('span');
+      tri.className = 'hi-tri';
+      const label = document.createElement('span');
+      label.textContent = highlight.title;
+      btn.append(tri, label);
+      btn.addEventListener('click', () => onHighlight && onHighlight(highlight));
+      li.appendChild(btn);
+      el.highlightsList.appendChild(li);
+    }
   }
 
   function buildLegend() {
@@ -212,6 +233,7 @@ export function createUI({ engine, systemData, markers, records, onSelect, onTog
 
   function init() {
     buildLegend();
+    buildHighlights();
     applyFilters();
 
     el.toggleMarkers.addEventListener('click', () => {

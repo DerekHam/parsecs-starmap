@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js';
-import { starTexture } from './textures.js?v=10';
+import { starTexture } from './textures.js?v=11';
 
 export function createScene(container, labelContainer) {
   const scene = new THREE.Scene();

@@ -1,7 +1,7 @@
 // Camera fly-to and drill-down helpers.
 
 import * as THREE from 'three';
-import { AU_KM, KM_PER_UNIT } from './config.js?v=10';
+import { AU_KM, KM_PER_UNIT } from './config.js?v=11';
 
 const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 

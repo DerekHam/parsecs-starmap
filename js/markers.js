@@ -4,7 +4,7 @@
 // asteroids) always carry a label; satellites show theirs on hover only.
 
 import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-import { AU_KM, KM_PER_UNIT } from './config.js?v=10';
+import { AU_KM, KM_PER_UNIT } from './config.js?v=11';
 
 // CSS2DRenderer sorts on renderOrder before camera distance, so a larger value
 // keeps major bodies on top of their satellites for overlapping clicks.

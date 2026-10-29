@@ -1,14 +1,15 @@
 // Bootstrap: load data, build the scene, wire interaction, run the loop.
 
 import * as THREE from 'three';
-import { createScene } from './scene.js?v=10';
-import { createBodies, updateBodies } from './bodies.js?v=10';
-import { loadAssets } from './assets.js?v=10';
-import { createOrbitLines } from './orbits.js?v=10';
-import { createMarkers } from './markers.js?v=10';
-import { createFocus } from './focus.js?v=10';
-import { createUI } from './ui.js?v=10';
-import { TimeEngine } from './time.js?v=10';
+import { createScene } from './scene.js?v=11';
+import { createBodies, updateBodies } from './bodies.js?v=11';
+import { loadAssets } from './assets.js?v=11';
+import { createOrbitLines } from './orbits.js?v=11';
+import { createMarkers } from './markers.js?v=11';
+import { createFocus } from './focus.js?v=11';
+import { createUI } from './ui.js?v=11';
+import { createHighlights } from './highlights.js?v=11';
+import { TimeEngine } from './time.js?v=11';
 
 async function loadSystem() {
   const indexRes = await fetch('data/systems.json');
@@ -41,6 +42,15 @@ async function main() {
     return;
   }
 
+  // Optional: featured articles highlighted on the map.
+  let highlightData = { highlights: [] };
+  try {
+    const hres = await fetch('data/highlights.json');
+    if (hres.ok) highlightData = await hres.json();
+  } catch (err) {
+    // highlights are optional; ignore failures
+  }
+
   const viewport = document.getElementById('viewport');
   const labelContainer = document.getElementById('labels');
   const { scene, camera, renderer, labelRenderer, controls } = createScene(viewport, labelContainer);
@@ -56,9 +66,9 @@ async function main() {
   const buildInfo = document.getElementById('build-info');
   if (buildInfo) {
     buildInfo.textContent =
-      `build v10 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
+      `build v11 · ${systemData.bodies.length} bodies · belt ${byId.has('belt') ? 'yes' : 'no'}`;
   }
-  console.log('[Parsecs] build v10 loaded:', systemData.name, systemData.bodies.length, 'bodies');
+  console.log('[Parsecs] build v11 loaded:', systemData.name, systemData.bodies.length, 'bodies');
 
   const focus = createFocus({ camera, controls, records, systemData });
 
@@ -92,6 +102,23 @@ async function main() {
     else resetView();
   }
 
+  // A featured article: focus its station if it has one, otherwise show the
+  // article itself in the info panel.
+  function activateHighlight(highlight) {
+    if (highlight.body && byId.has(highlight.body)) {
+      selectBody(highlight.body);
+      return;
+    }
+    ui.showInfo({
+      id: highlight.id,
+      name: highlight.title,
+      description: highlight.description || '',
+      wiki: highlight.wiki,
+      type: 'article'
+    }, []);
+    ui.renderBreadcrumb([]);
+  }
+
   const markers = createMarkers(systemData, records, selectBody);
 
   const ui = createUI({
@@ -99,12 +126,21 @@ async function main() {
     systemData,
     markers,
     records,
+    highlights: highlightData.highlights,
     onSelect: selectBody,
     onToggleOrbits: null,
     onResetView: resetView,
-    onUp: goUp
+    onUp: goUp,
+    onHighlight: activateHighlight
   });
   ui.init();
+
+  createHighlights({
+    highlights: highlightData.highlights,
+    scene,
+    records,
+    onActivate: activateHighlight
+  });
 
   // Keyboard: Escape / Backspace go up one level.
   document.addEventListener('keydown', (e) => {

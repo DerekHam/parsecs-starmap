@@ -22,5 +22,6 @@ export const BODY_TYPES = {
   moon: { label: 'Moon', color: '#cfcfcf', size: 'small' },
   station: { label: 'Station', color: '#7fe9ff', size: 'small' },
   observatory: { label: 'Observatory', color: '#b98cff', size: 'small' },
-  belt: { label: 'Belt', color: '#8b9099', size: 'small' }
+  belt: { label: 'Belt', color: '#8b9099', size: 'small' },
+  article: { label: 'Highlight', color: '#ffd21f', size: 'small' }
 };

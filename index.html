@@ -13,7 +13,7 @@
   <script type="importmap">
     {
       "imports": {
-        "three": "./vendor/three/three.module.js?v=10",
+        "three": "./vendor/three/three.module.js?v=11",
         "three/addons/": "./vendor/three/addons/"
       }
     }
@@ -44,11 +44,13 @@
       <button class="tool-btn" id="toggle-inhabited" aria-pressed="false">Inhabited only</button>
       <div class="toolbar-title">Legend</div>
       <ul class="legend" id="legend"></ul>
+      <div class="toolbar-title">Highlights</div>
+      <ul class="highlights" id="highlights-list"></ul>
       <button class="tool-btn wide" id="reset-view">Reset view</button>
       <div class="credits">
         Planets/star © <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">Solar System Scope</a> (CC BY 4.0)<br>
         Moons/dwarfs © <a href="https://github.com/CelestiaProject/CelestiaContent" target="_blank" rel="noopener">Celestia Content</a> (CC BY)
-        <br><span class="build" id="build-info">build v10 (loading…)</span>
+        <br><span class="build" id="build-info">build v11 (loading…)</span>
       </div>
     </aside>
 
@@ -80,6 +82,6 @@
     <div class="loading" id="loading">Loading the solar system…</div>
   </div>
 
-  <script type="module" src="js/main.js?v=10"></script>
+  <script type="module" src="js/main.js?v=11"></script>
 </body>
 </html>

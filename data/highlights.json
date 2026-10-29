@@ -1,0 +1,30 @@
+{
+  "highlights": [
+    {
+      "id": "earth-luna-l1",
+      "title": "Earth-Luna L1 Spaceport",
+      "body": "earth-luna-spaceport",
+      "description": "Sample article: the transfer hub fixed at the Earth-Luna L1 Lagrange point."
+    },
+    {
+      "id": "cassini-division-station",
+      "title": "Cassini Division Station",
+      "body": "cassini-division-station",
+      "description": "Sample article: a station threaded through the great gap in Saturn's rings."
+    },
+    {
+      "id": "asteroid-mining",
+      "title": "Asteroid Mining",
+      "point": { "aAU": 2.45, "angleDeg": 210 },
+      "wiki": "https://parsecs.fandom.com/wiki/Encyclopedia/Technologies/Asteroid_Mining",
+      "description": "Sample article: how the belt's resources are extracted and shipped."
+    },
+    {
+      "id": "paranoid-asteroid",
+      "title": "Paranoid Asteroid",
+      "point": { "aAU": 2.95, "angleDeg": 30 },
+      "wiki": "https://parsecs.fandom.com/wiki/Storylines/Paranoid_Astroid",
+      "description": "Sample storyline set among the asteroids of the belt."
+    }
+  ]
+}

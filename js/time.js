@@ -1,6 +1,6 @@
 // Time engine: holds the simulated instant and drives playback.
 
-import { DAY_MS, J2000_MS } from './config.js?v=10';
+import { DAY_MS, J2000_MS } from './config.js?v=11';
 
 export class TimeEngine {
   constructor() {
